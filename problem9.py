@@ -16,6 +16,22 @@ class City:
     for distance in self.distances:
       string += "(" + distance.printDistance() + ")"
     print string
+  def getShorterDistance(self,done):
+    value = 0
+    short = ""
+    done.append(self.name)
+    print done
+    for distance in self.distances:
+      if not distance.city2 in done:
+        #Find City2
+        for city in cities:
+          if city.name == distance.city2:
+            city2 = city
+        #Call City2 getShorterDistance with
+        thisValue = city2.getShorterDistance(copy.copy(done))
+        if thisValue + distance.distance < value or value == 0:
+          value = thisValue + distance.distance
+    return value
 
 class Distance:
   def __init__(self,city1,city2,distance):
@@ -49,7 +65,12 @@ for lines in array:
       newCity.distances.append(Distance(city2,city1,distance))
       cities.append(copy.copy(newCity))
 
+value = 0
 for city in cities:
   city.printDistances()
+  thisValue = city.getShorterDistance([])
+  if thisValue < value or value == 0:
+    value = thisValue
+  print thisValue
+print "answer" , value
 
-CitiesWent = []
