@@ -29,7 +29,7 @@ class City:
             city2 = city
         #Call City2 getShorterDistance with
         thisValue = city2.getShorterDistance(copy.copy(done))
-        if thisValue + distance.distance < value or value == 0:
+        if thisValue + distance.distance > value:
           value = thisValue + distance.distance
     return value
 
@@ -70,7 +70,7 @@ value = 0
 for city in cities:
   city.printDistances()
   thisValue = city.getShorterDistance([])
-  if thisValue < value or value == 0:
+  if thisValue > value or value == 0:
     value = thisValue
   print thisValue
 print "answer" , value
