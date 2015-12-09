@@ -42,8 +42,9 @@ class Distance:
     return self.city1 + "->" + self.city2 + ":" + str(self.distance)
 
 for lines in array:
-  matchUp = re.match("(.*) to (.*) -> (\d*)",lines)
+  matchUp = re.match("(.*) to (.*) = (\d*)",lines)
   if matchUp:
+    print "test"
     city1 = matchUp.group(1)
     city2 = matchUp.group(2)
     distance = int(matchUp.group(3))
