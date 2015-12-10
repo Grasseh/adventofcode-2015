@@ -15,6 +15,6 @@ def LookAndSay(sequence):
   return string
 
 string = "1321131112"
-for i in range(0,40):
+for i in range(0,50):
   string = LookAndSay(string)
 print len(string)
