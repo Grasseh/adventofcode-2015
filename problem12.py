@@ -1,10 +1,11 @@
 import json
 from inputs.input12 import input
 string = input()
-test = '[1,2,3]'
+test = string
 
 def getIntSumInObject(object):
   value = 0
+  red = False
   for stuff in object:
     if type(object) == list:
       if type(stuff) == list:
@@ -20,7 +21,11 @@ def getIntSumInObject(object):
         value += object[stuff]
       elif type(object[stuff]) == dict:
         value += getIntSumInObject(object[stuff])
-
+      elif type(object[stuff]) == unicode:
+        if object[stuff] == "red":
+          red = True
+  if red:
+    value = 0
   return value
 
 
