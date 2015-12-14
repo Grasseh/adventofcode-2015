@@ -1,7 +1,6 @@
 from inputs.input13 import input
 import re
 import copy
-#Note : Find and replace all "" in the input by @ and all \ by &
 string = input()
 array = string.splitlines()
 value = 0
