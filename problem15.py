@@ -35,12 +35,11 @@ def CountIngredient(index,used,remaining,capacity,durability,flavor,texture):
     final *= flavor if flavor > 0 else 0
     final *= texture if texture > 0 else 0
     final *= 0 if remaining != 0 else 1
-    if remaining == 0:
+    if capacity >= 0 and durability >= 0 and texture >= 0 and remaining == 0 and flavor >= 0:
       print "capacity" , capacity, "durability", durability, "flavor", flavor, "texture", texture, "final", final, "remaining", remaining
   else:
+    final = 0
     for i in range(0,remaining + 1):
-      print "j", remaining
-      final = 0
       thisValue = CountIngredient(index + 1,i,remaining,capacity,durability,flavor,texture)
       final = thisValue if thisValue > final else final
   return final
