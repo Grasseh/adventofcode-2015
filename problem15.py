@@ -22,13 +22,37 @@ for lines in array:
 
 value = 0
 
-def CountIngredient(index,used):
-  return ingredients[index].capacity
+def CountIngredient(index,used,remaining,capacity,durability,flavor,texture):
+  capacity += ingredients[index].capacity * used
+  durability += ingredients[index].durability * used
+  flavor += ingredients[index].flavor * used
+  texture += ingredients[index].texture * used
+  remaining -= used
+  if index == len(ingredients) - 1: #Last one
+    final = 1
+    final *= capacity if capacity > 0 else 0
+    final *= durability if durability > 0 else 0
+    final *= flavor if flavor > 0 else 0
+    final *= texture if texture > 0 else 0
+    final *= 0 if remaining != 0 else 1
+    if remaining == 0:
+      print "capacity" , capacity, "durability", durability, "flavor", flavor, "texture", texture, "final", final, "remaining", remaining
+  else:
+    for i in range(0,remaining + 1):
+      print "j", remaining
+      final = 0
+      thisValue = CountIngredient(index + 1,i,remaining,capacity,durability,flavor,texture)
+      final = thisValue if thisValue > final else final
+  return final
 
 
 for i in range(0,101): #First ingredient
-  thisValue = CountIngredient(0,i)
+  thisValue = CountIngredient(0,i,100,0,0,0,0)
+  print i
   value = thisValue if thisValue > value else value
+
+for ingredient in ingredients:
+  print ingredient.name, ingredient.capacity, ingredient.durability, ingredient.flavor, ingredient.texture
 
 print "answer" , value
 
