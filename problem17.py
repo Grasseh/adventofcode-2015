@@ -35,4 +35,4 @@ def NoSuchThingAsTooMuch(i,sum,on):
 
 NoSuchThingAsTooMuch(0,0,True)
 NoSuchThingAsTooMuch(0,0,False)
-print ("answer" , value)
+print "answer" , value
