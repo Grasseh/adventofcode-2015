@@ -1,5 +1,5 @@
 input = 36000000
-value = 1
+value = 60
 presents = 0
 
 def GetDivisors(number):
@@ -12,7 +12,7 @@ def GetDivisors(number):
 
 while presents < input:
   presents = 0
-  value += 1
+  value += 60
   for divisor in GetDivisors(value):
     presents += divisor * 10
     print value, divisor, presents
